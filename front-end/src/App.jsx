@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "./views/Login.jsx";
-import Homes from "./views/Homes.jsx";
+import Navbar from "./components/Navbar";
+import Homes from "./views/Homes";
+import Login from "./views/Login";
+import Empleados from "./views/Empleados";
+import Homepage from "./views/Homepage";
 import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/Homes" element={<Homes />}></Route>
-      <Route path="/Login" element={<Login />}></Route>
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/homes" element={<Homes />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/empleados" element={<Empleados />} />
+      </Routes>
+    </>
   );
 }
+
 export default App;
