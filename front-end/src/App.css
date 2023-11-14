@@ -19,12 +19,10 @@ body {
   transition: background-color 0.5s ease; /* Animación de cambio de color durante 0.5 segundos */
 }
 
-/* Estilo adicional para el formulario si lo deseas */
+/* Estilo adicional para el formulario si lo deseas 
 .login-box form {
-  /* Agrega estilos adicionales para el formulario aquí */
 }
-
-/* Animación para cambiar el color de fondo cada segundo */
+Animación para cambiar el color de fondo cada segundo */
 @keyframes changeBackgroundColor {
   0% {
     background-color: #ff7e5f;
