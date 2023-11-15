@@ -1,12 +1,31 @@
-import React, {useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [pasword, setPasword] = useState("");
 
-  const handleLogin = () => {
-    console.log("Correo electrónico:", email);
-    console.log("Contraseña:", password);
+  const getCorreo = (evt) => {
+    setCorreo(evt.target.value);
+    console.log(correo);
+  };
+  const getPasword = (evt) => {
+    setPasword(evt.target.value);
+    console.log(pasword);
+  };
+  const handleRegister = (evt) => {
+    evt.preventDefault();
+
+    axios({
+      url: "http://localhost:3000/users/login",  // Agrega el protocolo (http://)
+      method: "POST",
+      data: {
+        correo: correo,
+        pasword: pasword,
+      },
+    }).then((response) => {
+      console.log(response);
+    });   
   };
 
   return (
@@ -14,7 +33,7 @@ function Login() {
       <div className="container animated-background">
         <div className="login-box">
           <h2 className="text-2xl font-semibold mb-6">Iniciar sesión</h2>
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -27,8 +46,8 @@ function Login() {
                 id="email"
                 className="w-full border p-2 rounded focus:outline-none focus:border-blue-500"
                 placeholder="Correo electrónico"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={correo}
+                onChange={getCorreo}
               />
             </div>
             <div className="mb-4">
@@ -43,14 +62,14 @@ function Login() {
                 id="password"
                 className="w-full border p-2 rounded focus:outline-none focus:border-blue-500"
                 placeholder="Contraseña"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={pasword}
+                onChange={getPasword}
               />
             </div>
             <button
               type="button"
               className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-              onClick={handleLogin}
+              onClick={handleRegister} // Cambia handleLogin por handleRegister
             >
               Iniciar sesión
             </button>
